@@ -64,6 +64,35 @@ namespace FirstProject1
                         }
                         Console.WriteLine();
                         break;
+
+                    case "3":
+                        // 3. UPDATE
+                        Console.Write("Въведете името на човека за промяна на заплатата: ");
+                        string nameToUpdate = Console.ReadLine();
+
+                        Person personToUpdate = null;
+
+                        foreach(Person p in people)
+                        {
+                            if(p.Name.Equals(nameToUpdate, StringComparison.OrdinalIgnoreCase))
+                            {
+                                personToUpdate = p;
+                                break;
+                            }
+                        }
+                        if(personToUpdate != null)
+                        {
+                            Console.Write($"Сегашна заплата на {personToUpdate.Name}: {personToUpdate.Salary: F2}. Нова заплата");
+                            double newSalary = double.Parse(Console.ReadLine());
+                            personToUpdate.Salary = newSalary;
+                            SavePeopleToFile(people);
+                            Console.WriteLine();
+                        }
+                        break;
+
+                  
+
+
                 }
             }
         }
