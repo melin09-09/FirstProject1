@@ -29,6 +29,15 @@ namespace FirstProject1
                 Console.WriteLine();
             }
         }
+        static void SavePeopleToFile(List<Person> people)
+        {
+            List<string> rows = new List<string>();
+            foreach(Person p in people)
+            {
+                rows.Add(p.ToFileRow());
+            }
+            File.WriteAllLines(FilePath, rows);
+        }
         static List<Person> LoadPeopleFromFile()
         {
             List<Person> people = new List<Person>();
